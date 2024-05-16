@@ -8,7 +8,7 @@ import logging
 
 
 
-def filter_datum(fields, redaction, message, separator) -> str:
+def filter_datum(fields, redaction, message, separator):
     """Returns a obfuscated log message"""
     return re.sub(rf"({'|'.join(fields)})=[^{separator}]*",
                   lambda match: match.group(1) + "=" + redaction, message)
