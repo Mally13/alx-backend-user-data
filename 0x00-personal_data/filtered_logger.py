@@ -8,7 +8,8 @@ import logging
 
 
 
-def filter_datum(fields, redaction, message, separator) -> str:
+def filter_datum(fields: list[str], redaction: str, message: str,
+                 separator: str) -> str:
     """Returns a obfuscated log message"""
     for f in fields:
         message = re.sub(rf"{f}=(.*?)\{separator}",
