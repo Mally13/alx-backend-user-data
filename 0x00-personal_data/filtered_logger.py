@@ -35,7 +35,7 @@ class RedactingFormatter(logging.Formatter):
                             RedactingFormatter.SEPARATOR)
 
 
-PII_FIELDS = ("email", "ssn", "password", "phone", "ip")
+PII_FIELDS = ("email", "phone", "ssn", "password", "ip")
 
 
 def get_logger() -> logging.Logger:
