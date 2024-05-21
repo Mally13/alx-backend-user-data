@@ -5,6 +5,8 @@ message obfuscated
 """
 import logging
 from typing import List
+import mysql.connector
+import os
 import re
 
 
@@ -50,3 +52,17 @@ def get_logger() -> logging.Logger:
 
     logger.addHandler(stream_handler)
     return logger
+
+
+def get_db() -> mysql.connector.connection.MySQLConnection:
+    """Establishes a database connection"""
+    personal_db = mysql.connector.connect(
+        host = os.getenv('PERSONAL_DATA_DB_HOST'),
+        user = os.getenv('PERSONAL_DATA_DB_USERNAME'),
+        password = os.getenv('PERSONAL_DATA_DB_PASSWORD'),
+        database = os.getenv('PERSONAL_DATA_DB_NAME')
+
+    )
+    return personal_db
+
+
