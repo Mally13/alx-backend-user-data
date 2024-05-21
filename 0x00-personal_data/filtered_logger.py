@@ -84,6 +84,7 @@ def main():
     for row in cursor:
         user_data = '; '.join(f"{ALL_FIELDS[i]}={row[i]}"
                               for i in range(len(ALL_FIELDS)))
+        user_data += ';'
         log_record = logging.LogRecord("user_data",
                                        logging.INFO, None, None,
                                        user_data, None, None)
