@@ -70,3 +70,27 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
         return personal_db
     except mysql.connector.Error as e:
         raise RuntimeError("Failed to connext to the database")
+
+
+ALL_FIELDS = ("name", "email", "phone",
+              "ssn", "password", "ip", "last_login",
+              "user_agent")
+
+
+def main():
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM users;")
+    for row in cursor:
+        user_data = '; '.join(f"{ALL_FIELDS[i]}={row[i]}"
+                              for i in range(len(ALL_FIELDS)))
+        log_record = logging.LogRecord("user_data",
+                                       logging.INFO, None, None,
+                                       user_data, None, None)
+        formatter = RedactingFormatter(fields=PII_FIELDS)
+        print(formatter.format(log_record))
+    cursor.close()
+
+
+if __name__ == "__main__":
+    main()
