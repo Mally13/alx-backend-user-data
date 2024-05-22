@@ -24,6 +24,7 @@ class Auth:
                 path += '/'
             
             for excluded_path in exclude_paths:
+                excluded_path = excluded_path.strip()
                 if path == excluded_path:
                     return False
                 else:
