@@ -58,7 +58,6 @@ def before_request_handler():
         abort(403)
 
 
-
 if __name__ == "__main__":
     auth = getenv("AUTH_TYPE")
     if auth:
