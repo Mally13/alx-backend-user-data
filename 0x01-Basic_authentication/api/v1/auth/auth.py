@@ -15,11 +15,11 @@ class Auth:
     def require_auth(self, path: str, exclude_paths: List[str]) -> bool:
         """For paths that require auth"""
         return False
-    
+
     def authorization_header(self, request=None) -> str:
         """Handles flask request object"""
         return None
-    
+
     def current_user(self, request=None) -> TypeVar('User'):
         """current user"""
         return None
