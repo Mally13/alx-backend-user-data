@@ -20,6 +20,8 @@ class Auth:
             return True
         else:
             for excluded_path in exclude_paths:
+                path = path.strip()
+                excluded_path = excluded_path.strip()
                 if path == excluded_path[:-1]:
                     return False
                 else:
