@@ -17,7 +17,7 @@ class Auth:
         if path is None:
             return True
         elif not exclude_paths:
-            return True 
+            return True
         else:
             if path[-1] != '/':
                 path += '/'
