@@ -17,12 +17,14 @@ class Auth:
         if path is None:
             return True
         elif not exclude_paths:
-            return True
+            return True 
         else:
+            path = path.strip()
+            if path[-1] != '/':
+                path += '/'
+            
             for excluded_path in exclude_paths:
-                path = path.strip()
-                excluded_path = excluded_path.strip()
-                if path == excluded_path[:-1]:
+                if path == excluded_path:
                     return False
                 else:
                     return True
