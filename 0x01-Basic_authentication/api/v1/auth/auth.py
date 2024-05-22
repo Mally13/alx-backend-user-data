@@ -19,10 +19,8 @@ class Auth:
         elif not exclude_paths:
             return True
         else:
-            if path[-1] != '/':
-                path += '/'
             for excluded_path in exclude_paths:
-                if path == excluded_path:
+                if path == excluded_path[:-1]:
                     return False
                 else:
                     return True
