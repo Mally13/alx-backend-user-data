@@ -14,7 +14,18 @@ class Auth:
 
     def require_auth(self, path: str, exclude_paths: List[str]) -> bool:
         """For paths that require auth"""
-        return False
+        if path is None:
+            return True
+        elif not exclude_paths:
+            return True 
+        else:
+            if path[-1] != '/':
+                path += '/'
+            for excluded_path in exclude_paths:
+                if path == excluded_path:
+                    return False
+                else:
+                    return True
 
     def authorization_header(self, request=None) -> str:
         """Handles flask request object"""
