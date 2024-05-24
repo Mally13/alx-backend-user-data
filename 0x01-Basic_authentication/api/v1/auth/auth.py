@@ -16,7 +16,7 @@ class Auth:
         """For paths that require auth"""
         if path is None:
             return True
-        elif not exclude_paths:
+        elif not exclude_paths or len(exclude_paths) == 0:
             return True
         else:
             path = path.strip()
