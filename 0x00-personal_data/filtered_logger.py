@@ -78,6 +78,7 @@ ALL_FIELDS = ("name", "email", "phone",
 
 
 def main():
+    """The main function"""
     db = get_db()
     cursor = db.cursor()
     cursor.execute("SELECT * FROM users;")
