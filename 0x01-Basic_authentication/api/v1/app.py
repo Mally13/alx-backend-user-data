@@ -60,7 +60,7 @@ def before_request_handler():
 
 if __name__ == "__main__":
     auth = getenv("AUTH_TYPE")
-    if auth is None:
+    if auth:
         auth = BasicAuth()
     host = getenv("API_HOST", "0.0.0.0")
     port = getenv("API_PORT", "5000")
