@@ -3,11 +3,15 @@
 """
 
 if __name__ == "__main__":
-    from api.v1.auth.auth import Auth
+    from api.v1.auth.basic_auth import BasicAuth
+    from api.v1.app import auth
 
-    a = Auth()
-    res = a.require_auth("/api/v1/status/", ["/api/v1/stats/", "/api/v1/status/", "/api/v1/users/"])
-    if res:
-        print("require_auth must return False when path is in excluded_paths")
+    if auth is None:
+        print("'auth' doesn't exist in api/v1/app.py")
         exit(1)
+
+    if not isinstance(auth, BasicAuth):
+        print("auth is not an instance of BasicAuth")
+        exit(1)
+    
     print("OK", end="")
