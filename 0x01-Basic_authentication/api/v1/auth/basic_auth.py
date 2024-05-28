@@ -19,4 +19,3 @@ class BasicAuth(Auth):
             return None
         else:
             return authorization_header[6:]
-
