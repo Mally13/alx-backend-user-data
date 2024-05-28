@@ -19,15 +19,12 @@ class Auth:
         elif not exclude_paths or len(exclude_paths) == 0:
             return True
         else:
-            path = path.strip()
-            if path[-1] != '/':
-                path += '/'
+            path = path.rstrip('/') + '/'
             for excluded_path in exclude_paths:
                 excluded_path = excluded_path.strip()
                 if path.lower() == excluded_path.lower():
                     return False
-                else:
-                    return True
+            return True
 
     def authorization_header(self, request=None) -> str:
         """Handles flask request object"""
