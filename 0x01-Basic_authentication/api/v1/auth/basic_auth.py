@@ -59,7 +59,7 @@ class BasicAuth(Auth):
             user_email: str,
             user_pwd: str) -> TypeVar('User'):
         """Returns the User instance based on his email and password"""
-        if user_email or user_pwd is None:
+        if user_email is None or user_pwd is None:
             return None
         elif not isinstance(user_email, str):
             return None
